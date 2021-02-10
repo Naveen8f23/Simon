@@ -13,7 +13,7 @@ function press(){
 function theAnimation(name){
     $("#"+name).fadeOut(100).fadeIn(100);
 
-    var audio = new Audio("sounds/"+name+".mp3");
+    var audio = new Audio(name+".mp3");
     audio.play();
 }
 function nextSequence(){
@@ -37,7 +37,7 @@ $(".btn").on("click",function(event){
     var level;
     for(var i = 0; i<clickPattern.length; i++){
         if(clickPattern[i] != gamePattern[i]){
-            var wrongSound = new Audio("sounds/wrong.mp3");
+            var wrongSound = new Audio("wrong.mp3");
             wrongSound.play();
             $("body").addClass("game-over");
             setTimeout(function(){
