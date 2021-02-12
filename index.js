@@ -43,7 +43,7 @@ $(".btn").on("click",function(event){
             press();
         }
         currentLevel = i+2;
-        if(clickPattern[i] != gamePattern[i){
+        if(clickPattern[i] != gamePattern[i)){
                $("#level-title").html("Game Over,Your highest level is "+(gamePattern.length-1)+" Press Any Key to Restart");
             }
     }
