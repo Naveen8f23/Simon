@@ -40,10 +40,12 @@ $(".btn").on("click",function(event){
             setTimeout(function(){
                 $("body").removeClass("game-over");}
             ,250);
-            $("#level-title").html("Game Over,Your highest level is "+(gamePattern.length)+" Press Any Key to Restart");
             press();
         }
         currentLevel = i+2;
+        if(clickPattern[i] != gamePattern[i]){
+               $("#level-title").html("Game Over,Your highest level is "+(gamePattern.length)+" Press Any Key to Restart");
+            }
     }
         if(JSON.stringify(gamePattern) == JSON.stringify(clickPattern)){
                 $("#level-title").html("Level "+currentLevel);
