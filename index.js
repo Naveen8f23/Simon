@@ -32,27 +32,22 @@ $(".btn").on("click",function(event){
     ,100);
     theAnimation(event.target.id);
     clickPattern.push(event.target.id);
-    if(JSON.stringify(gamePattern) == JSON.stringify(clickPattern)){
+    for(var i = 0; i<clickPattern.length; i++){
+        if(clickPattern[i] != gamePattern[i]){
+            var wrongSound = new Audio("wrong.mp3");
+            wrongSound.play();
+            $("body").addClass("game-over");
+            setTimeout(function(){
+                $("body").removeClass("game-over");}
+            ,250);
+            $("#level-title").html("Game Over,Your highest level is "+(gamePattern.length)+" Press Any Key to Restart");
+            press();
+        }
+        currentLevel = i+2;
+    }
+        if(JSON.stringify(gamePattern) == JSON.stringify(clickPattern)){
                 $("#level-title").html("Level "+currentLevel);
                 setTimeout(nextSequence,1000);
-    }
-    else{
-       $("#level-title").html("Game Over,Your highest level is "+(gamePattern.length-1)+" Press Any Key to Restart");
-    }
-//     for(var i = 0; i<clickPattern.length; i++){
-//         if(clickPattern[i] != gamePattern[i]){
-//             var wrongSound = new Audio("wrong.mp3");
-//             wrongSound.play();
-//             $("body").addClass("game-over");
-//             setTimeout(function(){
-//                 $("body").removeClass("game-over");}
-//             ,250);
-//             press();
-//         }
-//         currentLevel = i+2;
-//         if(clickPattern[i] != gamePattern[i]){
-               
-//             }
-//     }
+        }
 });
 window.onload = press();
